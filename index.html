@@ -11,6 +11,30 @@
         .section { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
         h2 { color: #007bff; }
         footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+        
+        /* Animation Styles */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .heartbeat-icon {
+            display: block;
+            margin: 0 auto 10px;
+            width: 50px;
+            height: 50px;
+            animation: heartbeat 1.5s infinite;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +46,7 @@
     <div class="container">
         <section class="section" id="about">
             <h2>About Us</h2>
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920262.png" class="heartbeat-icon" alt="Medical Care Icon">
             <p>Peak Hands provides top-quality home nursing care services with experienced professionals ensuring comfort and medical support at home.</p>
         </section>
 
