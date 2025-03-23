@@ -4,82 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peak Hands - Home Nursing Care</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background: #012C40; color: white; padding: 20px; text-align: center; }
-        header img { width: 150px; height: auto; margin-bottom: 10px; }
-        .container { width: 80%; margin: auto; overflow: hidden; }
-        .section { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        h2 { color: #FF404C; }
-        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-        /* Animation Styles */
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #012C40;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1522071820083-91e4d9280e70');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero .btn {
+            background: #FF404C;
+            color: white;
+            padding: 12px 25px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero .btn:hover {
+            background: #d6303a;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Section Styles */
+        .section {
+            background: #fff;
+            padding: 40px 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* About Us Section */
+        #about img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        #services ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #services li {
+            background: #FF404C;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #services li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: #f1f1f1;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #testimonials p {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #1CA5B8;
+            color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: #FF404C;
+            color: white;
+            padding: 12px 25px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #d6303a;
+            cursor: pointer;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer .social-icons {
+            margin: 20px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #FF404C;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .section {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .heartbeat-icon {
-            display: block;
-            margin: 0 auto 10px;
-            width: 50px;
-            height: 50px;
-            animation: heartbeat 1.5s infinite;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <img src="peakhands.png" alt="Peak Hands Logo">
+    <section class="hero">
         <h1>Peak Hands - Home Nursing Care</h1>
-        <p>Compassionate and Professional Care at Your Doorstep</p>
-    </header>
+        <p>Your trusted partner in compassionate healthcare at home.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+    </section>
 
     <div class="container">
+        <!-- About Us Section -->
         <section class="section" id="about">
             <h2>About Us</h2>
             <img src="https://cdn-icons-png.flaticon.com/512/2920/2920262.png" class="heartbeat-icon" alt="Medical Care Icon">
             <p>Peak Hands provides top-quality home nursing care services with experienced professionals ensuring comfort and medical support at home.</p>
         </section>
 
+        <!-- Services Section -->
         <section class="section" id="services">
             <h2>Our Services</h2>
             <ul>
-                <li>24/7 In-Home Nursing</li>
-                <li>Post-Surgery Care</li>
-                <li>Senior & Elderly Care</li>
-                <li>Palliative & Hospice Care</li>
-                <li>Physiotherapy & Rehabilitation</li>
-                <li>Medication Management</li>
+                <li>
+                    <i class="fas fa-heartbeat"></i>
+                    <p>24/7 In-Home Nursing</p>
+                </li>
+                <li>
+                    <i class="fas fa-hospital"></i>
+                    <p>Post-Surgery Care</p>
+                </li>
+                <li>
+                    <i class="fas fa-users"></i>
+                    <p>Senior & Elderly Care</p>
+                </li>
+                <li>
+                    <i class="fas fa-pills"></i>
+                    <p>Palliative & Hospice Care</p>
+                </li>
+                <li>
+                    <i class="fas fa-wheelchair"></i>
+                    <p>Physiotherapy & Rehabilitation</p>
+                </li>
+                <li>
+                    <i class="fas fa-medkit"></i>
+                    <p>Medication Management</p>
+                </li>
             </ul>
         </section>
 
+        <!-- Testimonials Section -->
         <section class="section" id="testimonials">
             <h2>Testimonials</h2>
             <p>\"Peak Hands provided outstanding care for my elderly father. The nurses were compassionate and highly skilled.\" - Sarah M.</p>
             <p>\"Highly recommend their services! They made recovery at home so much easier.\" - John D.</p>
         </section>
 
+        <!-- Contact Us Section -->
         <section class="section" id="contact">
             <h2>Contact Us</h2>
             <p>Email: contact@peakhands.com</p>
             <p>Phone: +123 456 7890</p>
             <p>Address: 123 Health Street, Wellness City</p>
+            <a href="mailto:contact@peakhands.com" class="btn">Get in Touch</a>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2025 Peak Hands. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
     </footer>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
